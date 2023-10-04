@@ -1,6 +1,6 @@
 # Directory Contents Listing Tool
 
-This command-line application allows you to list the files and folders in a directory and display their sizes. It formats file sizes in megabytes (MB) for files smaller than 1024 MB and in gigabytes (GB) for files larger than or equal to 1024 MB. Additionally, it calculates and displays folder sizes.
+Command Line c++ application to list folder and file size. <du> command on steroids.
 
 ## Table of Contents
 
