@@ -35,9 +35,13 @@ Command Line c++ application to list folder and file size. (du) command on stero
 ## Example
 
 Listing files and folders in the current directory: /path/to/my_directory
+
 file1.txt (2.45 MB)
+
 file2.txt (158 KB)
+
 subfolder (1.24 GB)
+
 empty_folder (Empty Folder)
 
 
