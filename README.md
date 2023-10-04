@@ -23,3 +23,8 @@ This command-line application allows you to list the files and folders in a dire
 
    ```bash
    g++ -std=c++17 -o list_dir_contents list_directory_contents.cpp
+
+## Usage
+
+```bash
+./list
