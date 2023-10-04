@@ -1,6 +1,7 @@
 #include <iostream>
 #include <filesystem>
 #include <iomanip> // For std::setprecision and std::fixed
+#include <sstream>
 
 namespace fs = std::filesystem;
 
