@@ -19,10 +19,10 @@ Command Line c++ application to list folder and file size. (du) command on stero
 
 1. Clone the repository or download the source code.
 
-2. Compile the program using a C++ compiler with C++17 support. For example, using `g++`:
+2. Compile the program using a C++ compiler with C++17 support on Linux. For example, using `g++`:
 
    ```bash
-   g++ -std=c++17 -o list_dir_contents list_directory_contents.cpp
+   g++ -std=c++17 -o list main.cpp
 
 ## Usage
  1. Running the program:
