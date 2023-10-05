@@ -1,6 +1,6 @@
 # Directory Contents Listing Tool
 
-Command Line c++ application to list folder and file size. "<ls>" and "<du>" command on steroids.
+Command Line c++ application to list folder and file size. "(ls)" and "(du)" command on steroids.
 
 ## Table of Contents
 
