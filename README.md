@@ -44,6 +44,8 @@ subfolder (1.24 GB)
 
 empty_folder (Empty Folder)
 
+<br>
+<img src="https://imgur.com/ADG5hxc">
 
 ## License
 
