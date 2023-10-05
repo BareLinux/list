@@ -1,7 +1,8 @@
 #include <iostream>
 #include <filesystem>
-#include <iomanip> // For std::setprecision and std::fixed
+#include <iomanip>
 #include <sstream>
+#include <vector> // Added for sorting
 
 namespace fs = std::filesystem;
 
@@ -20,8 +21,28 @@ std::uintmax_t calculateDirectorySize(const fs::path& directoryPath) {
     return totalSize;
 }
 
+// Custom comparison function for sorting
+bool compareEntries(const fs::directory_entry& entry1, const fs::directory_entry& entry2) {
+    if (entry1.is_directory() && !entry2.is_directory()) {
+        return true; // Directories come before files
+    } else if (!entry1.is_directory() && entry2.is_directory()) {
+        return false; // Files come after directories
+    } else {
+        return entry1.path().filename() < entry2.path().filename(); // Alphabetical sorting
+    }
+}
+
 void listDirectoryContents(const fs::path& directoryPath) {
+    std::vector<fs::directory_entry> entries;
+
     for (const auto& entry : fs::directory_iterator(directoryPath)) {
+        entries.push_back(entry);
+    }
+
+    // Sort the entries using the custom comparison function
+    std::sort(entries.begin(), entries.end(), compareEntries);
+
+    for (const auto& entry : entries) {
         const fs::path& path = entry.path();
         std::string size;
 
@@ -58,7 +79,7 @@ void listDirectoryContents(const fs::path& directoryPath) {
                 size = ss.str();
             }
         } else {
-            size = "N/A"; // Handle other types (symlinks, sockets, etc.)
+            size = "N/A";
         }
 
         std::cout << path.filename().string() << " (" << size << ")" << std::endl;
@@ -68,7 +89,7 @@ void listDirectoryContents(const fs::path& directoryPath) {
 int main() {
     fs::path currentDirectory = fs::current_path();
 
-    std::cout << "Listing files and folders in the current directory: " << currentDirectory.string() << std::endl;
+    std::cout << "Current directory: " << currentDirectory.string() << std::endl;
 
     listDirectoryContents(currentDirectory);
     return 0;
