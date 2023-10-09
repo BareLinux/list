@@ -6,6 +6,12 @@
 
 namespace fs = std::filesystem;
 
+// ANSI escape codes for text colors
+const std::string GREEN = "\x1B[32m";  // Green
+const std::string DARK_BLUE = "\x1B[34m";  // Dark Blue
+const std::string CYAN = "\x1B[36m";  // Cyan
+const std::string RESET_COLOR = "\x1B[0m";  // Reset color to default
+
 std::uintmax_t calculateDirectorySize(const fs::path& directoryPath) {
     std::uintmax_t totalSize = 0;
 
@@ -60,6 +66,9 @@ void listDirectoryContents(const fs::path& directoryPath) {
                 ss << std::fixed << std::setprecision(2) << sizeInGB << " GB";
                 size = ss.str();
             }
+
+            // Color code for folders (dark blue)
+            std::cout << DARK_BLUE << path.filename().string() << RESET_COLOR << " (" << size << ")" << std::endl;
         } else if (fs::is_regular_file(path)) {
             std::uintmax_t fileSize = fs::file_size(path);
             if (fileSize < 1024 * 1024) {
@@ -75,11 +84,15 @@ void listDirectoryContents(const fs::path& directoryPath) {
                 ss << std::fixed << std::setprecision(2) << sizeInGB << " GB";
                 size = ss.str();
             }
+
+            // Color code for files (cyan)
+            std::cout << CYAN << path.filename().string() << RESET_COLOR << " (" << size << ")" << std::endl;
         } else {
             size = "N/A";
-        }
 
-        std::cout << path.filename().string() << " (" << size << ")" << std::endl;
+            // Color code for executables (green)
+            std::cout << GREEN << path.filename().string() << RESET_COLOR << " (" << size << ")" << std::endl;
+        }
     }
 }
 
@@ -124,7 +137,8 @@ int main(int argc, char* argv[]) {
             size = ss.str();
         }
 
-        std::cout << "File: " << pathToList.filename().string() << " (" << size << ")" << std::endl;
+        // Color code for files (cyan)
+        std::cout << CYAN << "File: " << pathToList.filename().string() << RESET_COLOR << " (" << size << ")" << std::endl;
     } else {
         std::cerr << "Invalid path type: " << pathToList.string() << std::endl;
         return 1;
