@@ -19,7 +19,7 @@ Command Line c++ application to list folder and file size. "(ls)" and "(du)" com
 
 1. Clone the repository or download the source code.
 
-2. Compile the program using a C++ compiler with C++17 support on Linux. For example, using `g++`:
+2. Compile the program using a C++ compiler with C++17 support. For example, using `g++`:
 
    ```bash
    g++ -std=c++17 -o list main.cpp
