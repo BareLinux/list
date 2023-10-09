@@ -49,7 +49,7 @@ void listDirectoryContents(const fs::path& directoryPath) {
         if (fs::is_directory(path)) {
             std::uintmax_t dirSize = calculateDirectorySize(path);
             if (dirSize == 0) {
-                size = "Empty Folder";
+                size = "Empty";
             } else if (dirSize < 1024 * 1024) {
                 size = std::to_string(dirSize / 1024) + " KB";
             } else if (dirSize < 1024 * 1024 * 1024) {
